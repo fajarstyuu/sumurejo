@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('productName');
             $table->string('productDetails');
+            $table->string('productImage');
             $table->timestamps();
         });
     }

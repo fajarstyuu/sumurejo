@@ -11,6 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ProductsResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -35,6 +36,15 @@ class ProductsResource extends Resource
                     ->required()
                     ->label('Deskripsi Produk')
                     ->maxLength(255),
+                FileUpload::make('productImage')
+                    ->required()
+                    ->image()
+                    ->label('Foto Produk')
+                    ->imageResizeMode('cover')
+                    ->imageCropAspectRatio('16:9')
+                    ->imageResizeTargetWidth('1920')
+                    ->imageResizeTargetHeight('1080')
+                    ->directory('uploads/products/images'),
             ]);
     }
 
